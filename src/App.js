@@ -1,11 +1,31 @@
 import "./App.css";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <h1 className="text-2xl font-extrabold">welcome</h1>
+      <Header />
+      <Body/>
+      <Footer/>
     </div>
   );
 }
 
 export default App;
+
+/*
+Head
+
+Body
+ - sidebar
+  - options
+ - main container
+   - buttons list
+   - video container
+    - video cards
+
+footer
+
+*/
