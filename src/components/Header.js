@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
+import {toggleMenu} from "../utils/appSlice"
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu())
+  };
+
   return (
     <div className="grid grid-flow-col shadow-lg p-3 m-2">
       <div className="col-span-2 flex">
         <img
-          className="h-9"
+          className="h-9 cursor-pointer"
+          onClick={() => toggleMenuHandler()}
           src="https://banner2.cleanpng.com/20180628/zaz/kisspng-computer-icons-hamburger-button-menu-new-menu-5b34724be5a1f0.5796308115301637879406.jpg"
         />
         <img
@@ -30,6 +38,6 @@ const Header = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

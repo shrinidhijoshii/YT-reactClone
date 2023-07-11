@@ -1,6 +1,12 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import appSlice from "../utils/appSlice";
 
 const Sidebar = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+  if (!isMenuOpen) return null;
+
   return (
     <div className="shadow-xl w-48 p-5">
       <div className="m-3">
@@ -26,6 +32,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Sidebar
+export default Sidebar;

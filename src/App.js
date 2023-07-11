@@ -2,13 +2,17 @@ import "./App.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Body/>
-      <Footer/>
+      <Provider store={store}>
+        <Header />
+        <Body />
+        <Footer />
+      </Provider>
     </div>
   );
 }
