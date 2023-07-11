@@ -12,13 +12,13 @@ const Header = () => {
     <div className="grid grid-flow-col shadow-lg p-3 m-2">
       <div className="col-span-2 flex">
         <img
-          className="h-9 cursor-pointer"
+          className="h-9 my-2 cursor-pointer"
           onClick={() => toggleMenuHandler()}
           src="https://banner2.cleanpng.com/20180628/zaz/kisspng-computer-icons-hamburger-button-menu-new-menu-5b34724be5a1f0.5796308115301637879406.jpg"
         />
         <img
-          className="h-9 mx-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg"
+          className="h-14 mx-2"
+          src="https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500"
         />
       </div>
       <div className="col-span-9">
