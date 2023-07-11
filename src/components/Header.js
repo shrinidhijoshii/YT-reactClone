@@ -1,25 +1,27 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {toggleMenu} from "../utils/appSlice"
+import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
-    dispatch(toggleMenu())
+    dispatch(toggleMenu());
   };
 
   return (
-    <div className="grid grid-flow-col shadow-lg p-3 m-2">
+    <div className="grid grid-flow-col shadow-lg p-3 my-2">
       <div className="col-span-2 flex">
         <img
           className="h-9 my-2 cursor-pointer"
           onClick={() => toggleMenuHandler()}
           src="https://banner2.cleanpng.com/20180628/zaz/kisspng-computer-icons-hamburger-button-menu-new-menu-5b34724be5a1f0.5796308115301637879406.jpg"
         />
-        <img
-          className="h-14 mx-2"
-          src="https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500"
-        />
+        <a href="/">
+          <img
+            className="h-14 mx-2"
+            src="https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500"
+          />
+        </a>
       </div>
       <div className="col-span-9">
         <input
