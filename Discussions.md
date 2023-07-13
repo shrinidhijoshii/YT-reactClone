@@ -4,15 +4,14 @@ Other Discussion:
   component which takes component as argument and returns component , it is is higher order component
   - practical used case : let say you have <Videcard/> component and you want to use same video card with some modification
   - using the higher order component we can use <Videcard/> with some modification like this
-  
-  - <code>const NewVideoCard = async (VideoCard) => {
+    - const NewVideoCard = async (VideoCard) => {
          return (
           <div className="bg-green border">
               <VideoCard info={item} />
           </div>
         );
       };
-    </code>
+  
       
   - NewVideoCard taking VideoCard as a argument and returning modified form of it(that is also component)
   - here we have created <NewVideoCard/> component which has all properties of <Videcard/> and <NewVideoCard/> has some extra properties added newly
