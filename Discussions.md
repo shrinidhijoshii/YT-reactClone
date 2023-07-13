@@ -12,7 +12,7 @@ Other Discussion:
           </div>
         );
       };
-    <code>
+    </code>
       
   - NewVideoCard taking VideoCard as a argument and returning modified form of it(that is also component)
   - here we have created <NewVideoCard/> component which has all properties of <Videcard/> and <NewVideoCard/> has some extra properties added newly
