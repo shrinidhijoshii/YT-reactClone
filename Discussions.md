@@ -5,7 +5,7 @@ Other Discussion:
   - practical used case : let say you have <Videcard/> component and you want to use same video card with some modification
   - using the higher order component we can use <Videcard/> with some modification like this
   ```
-    - const NewVideoCard = async (VideoCard) => {
+    const NewVideoCard = async (VideoCard) => {
          return (
           <div className="bg-green border">
               <VideoCard info={item} />
