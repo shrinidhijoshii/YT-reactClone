@@ -5,13 +5,14 @@ Other Discussion:
   - practical used case : let say you have <Videcard/> component and you want to use same video card with some modification
   - using the higher order component we can use <Videcard/> with some modification like this
   
-  - ````const NewVideoCard = async (VideoCard) => {```
-        ```return (```
-          ```<div className="bg-green border">```
-              ```<VideoCard info={item} />```
-          ```</div>```
-        ```);```
-      ```};```
+  - <code>const NewVideoCard = async (VideoCard) => {
+         return (
+          <div className="bg-green border">
+              <VideoCard info={item} />
+          </div>
+        );
+      };
+    <code>
       
   - NewVideoCard taking VideoCard as a argument and returning modified form of it(that is also component)
   - here we have created <NewVideoCard/> component which has all properties of <Videcard/> and <NewVideoCard/> has some extra properties added newly
@@ -31,8 +32,9 @@ Other Discussion:
        - with debouncing if we implement suggestions then , 3x1000 = 3000 api calls (high performant as less api calls)
 
 
+Machine coding Tips
 
-1.when interviwer asks to build any web app
+1.When interviwer asks to build any web app
 - do not start coding
 - ask these questions for requirement clarification
   - discuss about features you are planning to build
