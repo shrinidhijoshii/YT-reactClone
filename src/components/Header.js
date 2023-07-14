@@ -4,20 +4,38 @@ import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/constants";
 
 const Header = () => {
-  
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    console.log(searchQuery)
-    doSearchApiCall();
+    console.log(searchQuery);
+    // do api call after 200ms
+    // before 200ms , if re-render happens because of new key stroke reject the api call or dont do api call
+    const timer = setTimeout(() => doSearchApiCall(),200);
+    
+    // clear the timer before rendering next cycle or before re-render (un-mount cycle)
+    return () => {
+      clearTimeout(timer)
+    }
   }, [searchQuery]);
 
   const doSearchApiCall = async () => {
-    const data = await fetch(searchApi+searchQuery);
+    const data = await fetch(searchApi + searchQuery);
     const json = await data.json();
-    console.log(json[1])
-
+    console.log(json[1]);
   };
+
+  /*
+  when key - i is pressed 
+  - render the element
+  - call useEffect() bcz I have added searchQuery as dependency var
+  - start the timer => make api call after 200ms
+
+  when key - p is pressed after i (ip)
+  - destroy the previous element and unmount the timer which is defined in the useEffect
+  - re-render the element
+  - call useEffect() bcz I have added searchQuery as dependency var
+  - start the timer => make api call after 200ms
+   */
 
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
