@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { searchApi } from "../utils/constants";
 
 const Header = () => {
+  
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    console.log(searchQuery)
+    doSearchApiCall();
+  }, [searchQuery]);
+
+  const doSearchApiCall = async () => {
+    const data = await fetch(searchApi+searchQuery);
+    const json = await data.json();
+    console.log(json[1])
+
+  };
+
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -27,6 +43,10 @@ const Header = () => {
         <input
           className="border border-gray-500 p-2 w-1/2 rounded-l-full"
           placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
         />
         <button className="p-2 border border-gray-500 rounded-r-full bg-gray-100 w-14">
           🔍
