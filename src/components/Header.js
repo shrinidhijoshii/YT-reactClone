@@ -67,18 +67,18 @@ const Header = () => {
           onChange={(e) => {
             setSearchQuery(e.target.value);
           }}
-          onFocus={() => setSuggestionsDiv(true) }
+          onFocus={() => setSuggestionsDiv(true)}
           onBlur={() => setSuggestionsDiv(false)}
         />
         <button className="p-2 border border-gray-500 rounded-r-full bg-gray-100 w-14">
           🔍
         </button>
-        {suggestionsDiv && suggestions.length>0 ? (
+        {suggestionsDiv && suggestions.length > 0 ? (
           <div className="absolute bg-white p-3 m-1 border border-gray-300 rounded-lg shadow-lg lg:w-[35%] md:w-[30%] sm:w-max">
             <ul>
-              {suggestions.map((suggestion) => {
+              {suggestions.map((suggestion,index) => {
                 return (
-                  <li className="hover:bg-gray-100 cursor-pointer py-1">
+                  <li key={index} className="hover:bg-gray-100 cursor-pointer py-1">
                     {" "}
                     🔍 {suggestion}
                   </li>
@@ -92,8 +92,8 @@ const Header = () => {
       </div>
       <div className="col-span-1">
         <img
-          className="h-8"
-          src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+          className="h-8 my-3"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
         />
       </div>
     </div>
