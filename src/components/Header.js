@@ -5,23 +5,25 @@ import { searchApi } from "../utils/constants";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [suggestionsDiv, setSuggestionsDiv] = useState(false);
 
   useEffect(() => {
     console.log(searchQuery);
     // do api call after 200ms
     // before 200ms , if re-render happens because of new key stroke reject the api call or dont do api call
-    const timer = setTimeout(() => doSearchApiCall(),200);
-    
+    const timer = setTimeout(() => doSearchApiCall(), 200);
+
     // clear the timer before rendering next cycle or before re-render (un-mount cycle)
     return () => {
-      clearTimeout(timer)
-    }
+      clearTimeout(timer);
+    };
   }, [searchQuery]);
 
   const doSearchApiCall = async () => {
     const data = await fetch(searchApi + searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    setSuggestions(json[1]);
   };
 
   /*
@@ -65,10 +67,28 @@ const Header = () => {
           onChange={(e) => {
             setSearchQuery(e.target.value);
           }}
+          onFocus={() => setSuggestionsDiv(true) }
+          onBlur={() => setSuggestionsDiv(false)}
         />
         <button className="p-2 border border-gray-500 rounded-r-full bg-gray-100 w-14">
           🔍
         </button>
+        {suggestionsDiv && suggestions.length>0 ? (
+          <div className="absolute bg-white p-3 m-1 border border-gray-300 rounded-lg shadow-lg lg:w-[35%] md:w-[30%] sm:w-max">
+            <ul>
+              {suggestions.map((suggestion) => {
+                return (
+                  <li className="hover:bg-gray-100 cursor-pointer py-1">
+                    {" "}
+                    🔍 {suggestion}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
       <div className="col-span-1">
         <img
