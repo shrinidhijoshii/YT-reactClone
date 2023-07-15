@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY, getYtVideosApi } from "../utils/constants";
 import VideoCard from "./VideoCard";
+import CommentContainer from "./CommentContainer";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
@@ -58,9 +59,7 @@ const WatchPage = () => {
         <div>
           <p>description</p>
         </div>
-        <div className="py-4">
-          <h1>Comments</h1>
-        </div>
+        <CommentContainer/>
       </div>
       <div className="col-span-1 pl-4">
         {videoList.map((item) => {
