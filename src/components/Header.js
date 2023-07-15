@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/constants";
+import {useSelector } from "react-redux";
+import searchSlice, { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [suggestionsDiv, setSuggestionsDiv] = useState(false);
+  const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     console.log(searchQuery);
     // do api call after 200ms
     // before 200ms , if re-render happens because of new key stroke reject the api call or dont do api call
-    const timer = setTimeout(() => doSearchApiCall(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        console.log("found slice")
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        doSearchApiCall();
+      }
+    }, 200);
 
     // clear the timer before rendering next cycle or before re-render (un-mount cycle)
     return () => {
@@ -24,6 +35,9 @@ const Header = () => {
     const data = await fetch(searchApi + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
+    dispatch(cacheResults({
+      [searchQuery]: json[1]
+    }))
   };
 
   /*
@@ -39,7 +53,6 @@ const Header = () => {
   - start the timer => make api call after 200ms
    */
 
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
@@ -76,9 +89,12 @@ const Header = () => {
         {suggestionsDiv && suggestions.length > 0 ? (
           <div className="absolute bg-white p-3 m-1 border border-gray-300 rounded-lg shadow-lg lg:w-[35%] md:w-[30%] sm:w-max">
             <ul>
-              {suggestions.map((suggestion,index) => {
+              {suggestions.map((suggestion, index) => {
                 return (
-                  <li key={index} className="hover:bg-gray-100 cursor-pointer py-1">
+                  <li
+                    key={index}
+                    className="hover:bg-gray-100 cursor-pointer py-1"
+                  >
                     {" "}
                     🔍 {suggestion}
                   </li>
