@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/constants";
 import {useSelector } from "react-redux";
-import searchSlice, { cacheResults } from "../utils/searchSlice";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
