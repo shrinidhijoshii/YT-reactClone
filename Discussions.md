@@ -37,6 +37,11 @@ Other Discussion:
      - when we type anything , suggestions results can be stored in the redux store 
      - if we type same keyword or same search word in the future or the next time we can avoid api calls and give the already existing result.
 
+   - LRU (least recently used) cache - it is used to avoid cache bloating
+     - it is implemented using queue , we need to define threshold point as a size
+     - once queue size reaches threshold point , queue removes first added item [FIFO]
+     - it makes sures queue contains always defined threshold
+
 Machine coding Tips
 
 1.When interviwer asks to build any web app
