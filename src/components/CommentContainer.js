@@ -3,79 +3,98 @@ import Comment from "./Comment";
 
 const CommentsMock = [
   {
-    name: "Rahul",
+    name: "js-bot",
     comment: "is simply dummy text of the printing and typesetting industry",
-    replies: [],
+    replies: [
+      {
+        name: "wiliames",
+        comment:
+          "1st level nesting comment",
+        replies: [],
+      },
+      {
+        name: "akshay",
+        comment: "2nd level nesting comment",
+        replies: [
+          {
+            name: "shri",
+            comment:
+              "3rd level nesting comment",
+            replies: [],
+          },
+        ],
+      },
+    ],
   },
   {
-    name: "Rahul",
+    name: "yt-bot",
     comment: "when an unknown printer took a galley of type and",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "mars-prediator",
     comment: "when an unknown printer took a galley of type and",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "musk",
     comment: "Contrary to popular belief, Lorem Ipsum is not simply random tex",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "binod",
     comment: "iterature from 45 BC",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "xerxes",
     comment: "here are many variations of passages of Lorem Ipsum available",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "mahatma",
     comment: "but the majority have suffered alteration in some form",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "random-user",
     comment: "a Latin professor at Hampden-Sydney College in Virginia",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "rutherford",
     comment: "is simply dummy text of the printing and typesetting industry",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "react-pro",
     comment: "The standard chunk of Lorem Ipsum used since the 1500s",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "steve",
     comment:
       "n the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "gamer-fi",
     comment:
       "reproduced below for those interested. Sections 1.10.32 and 1.10.33",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "joshi",
     comment: "The standard chunk of Lorem Ipsum used since the 1500s",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "mark",
     comment: "ere isn't anything embarrassing ",
     replies: [],
   },
   {
-    name: "Rahul",
+    name: "xavier",
     comment: "is simply dummy text of the printing and typesetting industry",
     replies: [],
   },
@@ -89,7 +108,7 @@ const CommentsList = ({ comments }) => {
           <div>
             <Comment key={index} data={comment} />
             <div className="ml-5 pl-5 border border-l-gray-500 border-white">
-              <Comment key={index} data={comment} />
+              <CommentsList comments={comment.replies} />
             </div>
           </div>
         );

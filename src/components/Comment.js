@@ -9,9 +9,8 @@ const Comment = ({data}) => {
         src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
       />
       <div className="px-2 py-2">
-        <p className="font-semibold">@{name.toLowerCase()}</p>
+        <p className="font-semibold">@{name}</p>
         <p>{comment}</p>
-        <p>{replies}</p>
         <div className='flex space-x-2 cursor-pointer'>
           <p>👍🏼</p>
           <p>👎🏼</p>
