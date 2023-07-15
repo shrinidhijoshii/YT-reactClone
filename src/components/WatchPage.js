@@ -8,7 +8,6 @@ const WatchPage = () => {
   const [videoList, setVideoList] = useState([]);
 
   const [searchParam, setSearchParam] = useSearchParams();
-  console.log(searchParam.get("v"));
 
   useEffect(() => {
     const videoDetails = giveApiResponse();
@@ -19,7 +18,6 @@ const WatchPage = () => {
     const data = await fetch(getYtVideosApi);
     const json = await data.json();
     setVideoList(json.items);
-    console.log(json.items);
   };
 
   const giveApiResponse = async () => {
@@ -30,7 +28,6 @@ const WatchPage = () => {
     );
     const json = await getRes.json();
     setVideoDetails(json);
-    console.log(json);
   };
 
   return (

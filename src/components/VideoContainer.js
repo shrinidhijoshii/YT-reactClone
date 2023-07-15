@@ -14,7 +14,6 @@ const VideoContainer = () => {
     const data = await fetch(getYtVideosApi);
     const json = await data.json();
     setVideoList(json.items);
-    console.log(json.items);
   };
 
   return (

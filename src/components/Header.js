@@ -13,12 +13,10 @@ const Header = () => {
   const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
-    console.log(searchQuery);
     // do api call after 200ms
     // before 200ms , if re-render happens because of new key stroke reject the api call or dont do api call
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
-        console.log("found slice")
         setSuggestions(searchCache[searchQuery]);
       } else {
         doSearchApiCall();
