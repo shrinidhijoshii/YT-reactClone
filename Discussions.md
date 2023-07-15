@@ -32,6 +32,10 @@ Other Discussion:
        - without debouncing if we implement suggestions then , 14x1000 = 14000 api calls
        - with debouncing if we implement suggestions then , 3x1000 = 3000 api calls (high performant as less api calls)
 
+3. How can I further optimise api calls in debouncing 
+   - it can be achieved using caching (we are using redux store for caching)
+     - when we type anything , suggestions results can be stored in the redux store 
+     - if we type same keyword or same search word in the future or the next time we can avoid api calls and give the already existing result.
 
 Machine coding Tips
 
