@@ -88,7 +88,7 @@ const Header = () => {
           🔍
         </button>
         {suggestionsDiv && suggestions.length > 0 ? (
-          <div className="absolute bg-white p-3 m-1 border border-gray-300 rounded-lg shadow-lg lg:w-[35%] md:w-[30%] sm:w-max">
+          <div className="absolute bg-white p-3 my-12 border border-gray-300 rounded-lg shadow-lg lg:w-[35%] md:w-[30%] sm:w-max">
             <ul>
               {suggestions.map((suggestion, index) => {
                 return (

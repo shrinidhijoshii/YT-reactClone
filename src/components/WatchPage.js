@@ -34,7 +34,6 @@ const WatchPage = () => {
 
     SetVideoDetailsById(jsonOne.items[0].snippet);
     setChannelDetails(jsonTwo.items[0].snippet);
-    console.log(jsonTwo);
   };
 
   const getRecomendedVideo = async () => {
@@ -57,22 +56,24 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <h1 className="py-3 font-bold text-2xl">{VideoDetailsById.title}</h1>
+        <h1 className="py-3 font-semibold text-xl">{VideoDetailsById.title}</h1>
         <div className="flex">
-          <img
-            className="h-10 my-8 mx-1 rounded-full"
-            src={channelDetails.thumbnails?.high.url}
-          />
-          <h1 className="py-10 font-semibold text-xl">
-            {VideoDetailsById.channelTitle}
-          </h1>
-          <img
-            className="h-28 cursor-pointer mx-2"
-            src="https://cdn.pixabay.com/photo/2021/03/18/10/21/subscribe-6104536_1280.png"
-          ></img>
-          <div className=" h-11 my-8 mx-16 flex bg-gray-200 rounded-3xl">
-            <ThumbsUp className="mx-6 cursor-pointer my-3" />
-            <ThumbsDown className="mx-6 cursor-pointer my-3" />
+          <div className="flex">
+            <img
+              className="h-10 my-8 rounded-full"
+              src={channelDetails.thumbnails?.high.url}
+            />
+            <h1 className="py-10 font-semibold text-xl">
+              {VideoDetailsById.channelTitle}
+            </h1>
+            <img
+              className="h-28 cursor-pointer"
+              src="https://cdn.pixabay.com/photo/2021/03/18/10/21/subscribe-6104536_1280.png"
+            ></img>
+          </div>
+          <div className=" h-11 my-8 mx-12 flex bg-gray-200 rounded-3xl">
+            <ThumbsUp className="mx-4 cursor-pointer my-3" />
+            <ThumbsDown className="mx-4 cursor-pointer my-3" />
           </div>
           <div className=" h-11 my-8 bg-gray-200 flex rounded-3xl cursor-pointer">
             <Forward size={32} className="my-2 mx-2" />
@@ -80,7 +81,7 @@ const WatchPage = () => {
           </div>
         </div>
         <div className="shadow-lg h-auto rounded-lg p-2 hover:bg-gray-100 w-auto">
-          <p className="font-medium">{VideoDetailsById.description}</p>
+          <p className="font-medium whitespace-pre-line">{VideoDetailsById.description}</p>
         </div>
         <CommentContainer />
       </div>
