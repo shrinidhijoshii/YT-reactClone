@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/constants";
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { cacheResults } from "../utils/searchSlice";
+import { Mic } from "lucide-react";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,9 +34,11 @@ const Header = () => {
     const data = await fetch(searchApi + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
-    dispatch(cacheResults({
-      [searchQuery]: json[1]
-    }))
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
 
   /*
@@ -56,7 +59,7 @@ const Header = () => {
   };
 
   return (
-    <div className="grid grid-flow-col shadow-lg p-3 my-2">
+    <div className="grid grid-flow-col shadow-lg p-2 my-2">
       <div className="col-span-2 flex">
         <img
           className="h-9 my-2 cursor-pointer"
@@ -70,9 +73,9 @@ const Header = () => {
           />
         </a>
       </div>
-      <div className="col-span-9">
+      <div className="col-span-9 flex">
         <input
-          className="border border-gray-500 p-2 w-1/2 rounded-l-full"
+          className="border border-gray-500 p-2 w-1/2 rounded-l-full h-10 my-2"
           placeholder="Search"
           value={searchQuery}
           onChange={(e) => {
@@ -81,7 +84,7 @@ const Header = () => {
           onFocus={() => setSuggestionsDiv(true)}
           onBlur={() => setSuggestionsDiv(false)}
         />
-        <button className="p-2 border border-gray-500 rounded-r-full bg-gray-100 w-14">
+        <button className="p-2 border border-gray-500 rounded-r-full bg-gray-100 w-14 h-10 my-2">
           🔍
         </button>
         {suggestionsDiv && suggestions.length > 0 ? (
@@ -103,10 +106,11 @@ const Header = () => {
         ) : (
           <div></div>
         )}
+        <Mic className="border my-3 p-1 mx-2 h-8 w-8 border-gray-500 rounded-full bg-gray-100 cursor-pointer" />
       </div>
       <div className="col-span-1">
         <img
-          className="h-8 my-3"
+          className="h-10 my-3"
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
         />
       </div>

@@ -3,32 +3,44 @@ import { Link, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY, getYtVideosApi } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import CommentContainer from "./CommentContainer";
+import { ThumbsDown, ThumbsUp, Forward } from "lucide-react";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
   const [videoList, setVideoList] = useState([]);
+  const [VideoDetailsById, SetVideoDetailsById] = useState([]);
+  const [channelDetails, setChannelDetails] = useState([]);
 
   const [searchParam, setSearchParam] = useSearchParams();
 
   useEffect(() => {
-    const videoDetails = giveApiResponse();
-    const videoList = getRecomendedVideo();
-  }, []);
+    // giveApiResponse();
+    getRecomendedVideo();
+    getVideoDetailsById();
+  }, [searchParam]);
+
+  const getVideoDetailsById = async () => {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${searchParam.get(
+        "v"
+      )}&key=AIzaSyAXXswR90gvfIHnJCpf12LPgz2-XDQR4uA`
+    );
+    const jsonOne = await response.json();
+
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${jsonOne.items[0].snippet.channelId}&key=${GOOGLE_API_KEY}`
+    );
+    const jsonTwo = await res.json();
+
+    SetVideoDetailsById(jsonOne.items[0].snippet);
+    setChannelDetails(jsonTwo.items[0].snippet);
+    console.log(jsonTwo);
+  };
 
   const getRecomendedVideo = async () => {
     const data = await fetch(getYtVideosApi);
     const json = await data.json();
     setVideoList(json.items);
-  };
-
-  const giveApiResponse = async () => {
-    const getRes = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${searchParam.get(
-        "v"
-      )}c&key=${GOOGLE_API_KEY}`
-    );
-    const json = await getRes.json();
-    setVideoDetails(json);
   };
 
   return (
@@ -45,21 +57,32 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <h1 className="py-3">
-          video title
-          {/* <div className="m-2">{videoDetails.items[0].snippet.title}</div> */}
-        </h1>
+        <h1 className="py-3 font-bold text-2xl">{VideoDetailsById.title}</h1>
         <div className="flex">
-          <h1 className="py-10">Channel Name</h1>
+          <img
+            className="h-10 my-8 mx-1 rounded-full"
+            src={channelDetails.thumbnails?.high.url}
+          />
+          <h1 className="py-10 font-semibold text-xl">
+            {VideoDetailsById.channelTitle}
+          </h1>
           <img
             className="h-28 cursor-pointer mx-2"
             src="https://cdn.pixabay.com/photo/2021/03/18/10/21/subscribe-6104536_1280.png"
           ></img>
+          <div className=" h-11 my-8 mx-16 flex bg-gray-200 rounded-3xl">
+            <ThumbsUp className="mx-6 cursor-pointer my-3" />
+            <ThumbsDown className="mx-6 cursor-pointer my-3" />
+          </div>
+          <div className=" h-11 my-8 bg-gray-200 flex rounded-3xl cursor-pointer">
+            <Forward size={32} className="my-2 mx-2" />
+            <h1 className="my-3 mx-2">Share</h1>
+          </div>
         </div>
-        <div>
-          <p>description</p>
+        <div className="shadow-lg h-auto rounded-lg p-2 hover:bg-gray-100 w-auto">
+          <p className="font-medium">{VideoDetailsById.description}</p>
         </div>
-        <CommentContainer/>
+        <CommentContainer />
       </div>
       <div className="col-span-1 pl-4">
         {videoList.map((item) => {
