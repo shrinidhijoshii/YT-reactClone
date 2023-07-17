@@ -42,6 +42,22 @@ Other Discussion:
      - once queue size reaches threshold point , queue removes first added item [FIFO]
      - it makes sures queue contains always defined threshold
 
+4. How can I show live data in my web app (eg : YT live chat)
+   - all live data handling web apps internally uses: 
+    1. web-sockets [ UI(data layer) <-----> Server ]
+    2. API polling [ UI(data layer) ------ Server ]
+
+    web-sockets:
+      - web-socket is a bi-directional handshake connection bw Server & data layer of the UI
+      - bi-drectional means handshake connection is able to send data from data layer of the UI to Server & Server to data layer of the UI
+      - as soon as we start our app , two way handshake will be established after that data flows bw both ends very fastly
+      - eg: Trading apps , Live chats
+
+    API polling:
+      - API polling is uni-directional , after regular interval of time polling is done to check any data is available to display or to use
+      - if data is available , again this poling cycle will repeat
+      - eg : Gmail, YT live chat
+
 Machine coding Tips
 
 1.When interviwer asks to build any web app
