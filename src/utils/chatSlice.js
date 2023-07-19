@@ -11,7 +11,6 @@ const chatSlice = createSlice({
         state.messages.splice(0, state.messages.length/3);
       }
       state.messages.unshift(action.payload);
-      console.log(state.messages.length);
     },
   },
 });
