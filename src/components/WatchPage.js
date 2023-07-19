@@ -4,6 +4,7 @@ import { GOOGLE_API_KEY, getYtVideosApi } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import CommentContainer from "./CommentContainer";
 import { ThumbsDown, ThumbsUp, Forward } from "lucide-react";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
@@ -81,11 +82,14 @@ const WatchPage = () => {
           </div>
         </div>
         <div className="shadow-lg h-auto rounded-lg p-2 hover:bg-gray-100 w-auto">
-          <p className="font-medium whitespace-pre-line">{VideoDetailsById.description}</p>
+          <p className="font-medium whitespace-pre-line">
+            {VideoDetailsById.description}
+          </p>
         </div>
         <CommentContainer />
       </div>
       <div className="col-span-1 pl-4">
+        <LiveChat />
         {videoList.map((item) => {
           return (
             <Link to={`/watch?v=${item.id}`} key={item.id}>
