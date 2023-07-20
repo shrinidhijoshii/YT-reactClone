@@ -48,8 +48,8 @@ const WatchPage = () => {
       <div className="col-span-11 m-2">
         <div className="">
           <iframe
-            width="800"
-            height="400"
+            width="100%"
+            height="600"
             src={`https://www.youtube.com/embed/${searchParam.get("v")}`}
             title="YouTube video player"
             frameBorder="0"
@@ -58,13 +58,13 @@ const WatchPage = () => {
           ></iframe>
         </div>
         <h1 className="py-3 font-semibold text-xl">{VideoDetailsById.title}</h1>
-        <div className="flex">
+        <div className="lg:flex md:flex-wrap sm:flex-wrap">
           <div className="flex">
             <img
               className="h-10 my-8 rounded-full"
               src={channelDetails.thumbnails?.high.url}
             />
-            <h1 className="py-10 font-semibold text-xl">
+            <h1 className="py-10 px-2 font-semibold text-xl">
               {VideoDetailsById.channelTitle}
             </h1>
             <img
