@@ -92,4 +92,3 @@ Machine coding Tips
  6. https://testing-library.com/docs/react-testing-library/intro/
  7. https://jestjs.io/docs/getting-started
  8. https://testing-library.com/docs/queries/bytestid/
- 9. 
