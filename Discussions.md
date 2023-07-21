@@ -80,3 +80,16 @@ Machine coding Tips
 -  Implementation
  - use ```npx create-react-app app_name`` for the first time in the interest of time
  - before using above command explain how we can use react in existing project as a web-pack and do the rest things manually
+
+
+ Important Docs 
+
+ 1. https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+ 2. https://mui.com/material-ui/react-autocomplete/#search-as-you-type
+ 3. https://styled-components.com/docs/basics
+ 4. https://tailwindcss.com/
+ 5. https://redux-toolkit.js.org/introduction/getting-started#purpose
+ 6. https://testing-library.com/docs/react-testing-library/intro/
+ 7. https://jestjs.io/docs/getting-started
+ 8. https://testing-library.com/docs/queries/bytestid/
+ 9. 
