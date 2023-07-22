@@ -8,7 +8,7 @@
    - useState, useEffect, useParams, useSearchParams 
 2. Used react-router-dom for routing
 3. Used redux store to handle data layer & sync of the data layer and UI layer
-4. Build search and suggestions functionality & includes
+4. Built search and suggestions functionality & includes
     -  debouncing with 200ms which increases user experience(UX) and also web ap performane
     -  live search and suggestions using Youtube API
     -  Used cache to optimize the search results & suggestions (redux store)
