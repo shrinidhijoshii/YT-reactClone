@@ -9,7 +9,7 @@
 2. Used react-router-dom for routing
 3. Used redux store to handle data layer & sync of the data layer and UI layer
 4. Built search and suggestions functionality & includes
-    -  debouncing with 200ms which increases user experience(UX) and also web ap performane
+    -  debouncing with 200ms which increases user experience(UX) and also web app performane
     -  live search and suggestions using Youtube API
     -  Used cache to optimize the search results & suggestions (redux store)
 5. Live chat functionality using API polling and redux 
