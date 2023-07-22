@@ -93,3 +93,4 @@ Machine coding Tips
  7. https://jestjs.io/docs/getting-started
  8. https://testing-library.com/docs/queries/bytestid/
  9. https://react.dev/reference/react
+ 10. https://github.com/chetannada/Namaste-React
